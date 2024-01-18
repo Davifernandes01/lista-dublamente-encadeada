@@ -135,23 +135,26 @@ void list_add_first(List *list, int val){
 }
 
 
+/**
+ * @brief adiciona um elemento no final da lista
+*/
 void list_add_last(List *list, int val){
 
-  Node *node = create_doubly_node(val);
+  Node *node = create_doubly_node(val); //cria o node
 
-  if(list_is_empty(list)){
+  if(list_is_empty(list)){ //caso a lista estiver vazia..
 
-      list->begin = node;
+      list->begin = node; //aponta o inicio da lista para o node
       
 
-  }else{
+  }else{ //caso a lista esteja com elementos 
 
-      list->end->next = node;
-      node->prev = list->end;
+      list->end->next = node; // o atributo next do ultimo elemento da lista apontara para o node 
+      node->prev = list->end; // o atributo prev do elemento node apontara para o elemento final da lista
       
   }
-    list->end = node;
-    list->size++;
+    list->end = node; // o final da lista apontara para o node 
+    list->size++; //a quantidade de elementos da lista aumentara em mais 1;
 }
 
 /***
