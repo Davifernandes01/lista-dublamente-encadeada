@@ -14,7 +14,7 @@ void list_add_first(List *list, int val);
 void List_print(const List *list);
 void List_print_inverted(const List *list);
 void list_add_last(List *list, int val);
-
+void list_remove(List *list, int val);
 
 
 

@@ -9,11 +9,7 @@ int main(){
 
 
     list_add_last(list, 10);
-    list_add_last(list, 4);
-    list_add_last(list, 7);
-    list_add_last(list, 2);
-    list_add_last(list, 19);
-    list_add_last(list, 1064);
+    
 
    
 
@@ -23,6 +19,13 @@ int main(){
     list_add_first(list2, 2);
     list_add_last(list2, 19);
     list_add_first(list2, 1064);
+
+    List_print(list2);
+
+    list_remove(list2,10);
+    list_remove(list2,7);
+    list_remove(list2, 19);
+    list_remove(list2,1064);
 
     List_print(list2);
 

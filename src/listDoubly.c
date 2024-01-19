@@ -174,11 +174,8 @@ void List_print(const List *list){
          
          node =node->next;
     }
-
-
     printf("Size: %lu\n", list->size);
     puts("");
-
 }
 
 /**
@@ -194,13 +191,61 @@ void List_print_inverted(const List *list){
          
          node =node->prev; //ponteiro 'prev' aponta para o nó anterior do elemento node;
     }
-
-
     printf("Size: %lu\n", list->size);
     puts("");
-
 }
+/***
+ * @brief remoção dos elementos de uma lista duplamente encadeada
+*/
+void list_remove(List *list, int val){
 
+    if(!list_is_empty(list)){ //caso a lista nao esteja vazia
+        Node *node = list->begin; //aponta para o node no começo da lista
 
+        if(list->begin->val == val){ //verifica se o valor digitado é o mesmo do node, caso for:
+
+          if(list->begin == list->end){ //verificasse se a lista so possui um elemento, caso tenha:
+
+            list->begin = NULL;
+            list->end = NULL;
+            // aponta o begin e o end para null, deizando a lista vazia
+              
+          }else{ //caso a lista tenha mais de um elemnento
+
+              list->begin = node->next; // o começo da lista, aponta para o proximo elemento do node
+              list->begin->prev = NULL; // como o primero node nao possui elemento anterior, apontamos o ponteiro prev para NUll.
+            
+          }
+          free(node); //desalocamos(apagamos) o  node
+          list->size--; //diminuimos o numero de elementos da lista 
+       }else{ //caso o elemento nao esteja no começo da lista
+            
+            node = node->next;
+
+            while(node != NULL){
+                if(node->val == val){
+                  if(list->end == node){
+
+                      list->end = node->prev;
+                      list->end->next = NULL;
+                   }else{
+
+                        node->prev->next = node->next;
+                        node->next->prev = node->prev;
+
+                    }
+                      free(node);
+                      node = NULL;
+                      list->size--;
+                }else{
+                  node = node->next;
+                }
+
+            }
+
+       }
+       
+    }
+}
 
 
