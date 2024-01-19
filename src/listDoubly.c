@@ -218,27 +218,27 @@ void list_remove(List *list, int val){
           }
           free(node); //desalocamos(apagamos) o  node
           list->size--; //diminuimos o numero de elementos da lista 
-       }else{ //caso o elemento nao esteja no começo da lista
+       }else{ //caso o elemento nao esteja no começo da lista:
             
-            node = node->next;
+            node = node->next; //o node receber o proximo valor dele
 
-            while(node != NULL){
-                if(node->val == val){
-                  if(list->end == node){
+            while(node != NULL){ //enquanto node for diferente de nulo:
+                if(node->val == val){ //caso ache o valor
+                  if(list->end == node){ // verificasse se o node e igual ao valor do etributo 'end' da lista(final da lista), caso for:
 
-                      list->end = node->prev;
-                      list->end->next = NULL;
-                   }else{
+                      list->end = node->prev; // 'end' passara a valer o valor anterior ao node
+                      list->end->next = NULL; //atributo 'next' do nov valor de 'end' passara a ser nulo
+                   }else{ // caso o valor nao esteja nem no começo e nem no final da lista(vai estar no meio):
 
-                        node->prev->next = node->next;
-                        node->next->prev = node->prev;
+                        node->prev->next = node->next;//atributo next do valor anterior do node atual, apontará o valor do proximo node, do node atual.
+                        node->next->prev = node->prev; // atributo prev do proximo node do atual, vai apontar para o node anterio do atual
 
                     }
-                      free(node);
-                      node = NULL;
-                      list->size--;
-                }else{
-                  node = node->next;
+                      free(node); //desalocamos(apagamos) o valor contido no node
+                      node = NULL; // node valerá null
+                      list->size--; //diminuimos o tamanho da lista
+                }else{ //caso o valor não seja o do node atuaL:
+                  node = node->next; //passrá para o proximo node.
                 }
 
             }
