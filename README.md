@@ -1,4 +1,4 @@
-<H2>Resumo encadeada duplamente encadeada: </H2>
+<H2>Resumo lista duplamente encadeada: </H2>
 
 <br>
 <p>
